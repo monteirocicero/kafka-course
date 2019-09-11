@@ -1,5 +1,5 @@
 
-package com.cicero.kafka;
+package kafka;
 
 import org.apache.kafka.clients.producer.*;
 import org.apache.kafka.common.serialization.StringSerializer;
@@ -24,18 +24,15 @@ public class ProducerDemoWithCallback {
         for (int i = 0; i < 10; i++) {
             ProducerRecord<String, String> record = new ProducerRecord<String, String>("first_topic", "Hellow world!" + i);
 
-            producer.send(record, new Callback() {
-                @Override
-                public void onCompletion(RecordMetadata metadata, Exception exception) {
-                    if (exception == null) {
-                        logger.info("Received new metadata.\n" +
-                                "Topic: " + metadata.topic() + "\n" +
-                                "Particion: " + metadata.partition() + "\n" +
-                                "Offset: " + metadata.offset() + "\n" +
-                                "Timestamp: " + metadata.timestamp());
-                    } else {
-                        logger.error("Error while producing", exception);
-                    }
+            producer.send(record, (metadata, exception) -> {
+                if (exception == null) {
+                    logger.info("Received new metadata.\n" +
+                            "Topic: " + metadata.topic() + "\n" +
+                            "Particion: " + metadata.partition() + "\n" +
+                            "Offset: " + metadata.offset() + "\n" +
+                            "Timestamp: " + metadata.timestamp());
+                } else {
+                    logger.error("Error while producing", exception);
                 }
             });
         }

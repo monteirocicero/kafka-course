@@ -1,5 +1,5 @@
 
-package com.cicero.kafka;
+package kafka;
 
 import org.apache.kafka.clients.producer.*;
 import org.apache.kafka.common.serialization.StringSerializer;

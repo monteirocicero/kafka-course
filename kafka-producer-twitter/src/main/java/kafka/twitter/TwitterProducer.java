@@ -117,10 +117,10 @@ public class TwitterProducer {
         hosebirdEndpoint.trackTerms(terms);
 
         // These secrets should be read from a config file
-        String consumerKey = "o9YzJrRwqTxSfuYPTdkZuS4BT";
-        String consumerSecret = "tmhEg3arhG9wZsAVHLlaUmF6hx5PFI9gbvZ8jcSwlQ2cmSvF1L";
-        String token = "3409030827-NfBDQwfCmT2DoSpBTjVbaAUpiXEg0hLkjRbH6Vb";
-        String secret = "d8Mx8EWzS6YuexYFu4d609nU2Mte4MsXI5zNDcoQkM0mu";
+        String consumerKey = "";
+        String consumerSecret = "";
+        String token = "-";
+        String secret = "";
         Authentication hosebirdAuth = new OAuth1(consumerKey, consumerSecret, token, secret);
 
 
